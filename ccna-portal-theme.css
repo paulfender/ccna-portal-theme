@@ -1,12 +1,14 @@
-/*
-CCNA Customer Portal - Clean Custom Theme
-Fixed: duplicate rules, broken selectors, pseudo-elements, comments
-*/
+/* =========================================================
+   CCNA Customer Portal - Fixed Theme
+   - Colour logo (embedded)
+   - Background image
+   - Cleaned + working selectors
+   ========================================================= */
 
-/* ── Google Fonts ───────────────────────────────── */
+/* ── Fonts ───────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
 
-/* ── Variables ─────────────────────────────────── */
+/* ── Variables ───────────────────────────────────────── */
 :root {
   --ccna-navy: #00053D;
   --ccna-teal: #00A89D;
@@ -18,15 +20,37 @@ Fixed: duplicate rules, broken selectors, pseudo-elements, comments
   --ccna-gradient: linear-gradient(135deg, #00A89D 0%, #4BB87A 50%, #7DC242 100%);
 }
 
-/* ── Base ─────────────────────────────────────── */
-body {
+/* ── Base ───────────────────────────────────────────── */
+html, body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--ccna-light-bg);
-  color: var(--ccna-text);
   font-size: 14px;
+  color: var(--ccna-text);
+
+  /* BACKGROUND IMAGE */
+  background-image: url('REPLACE_WITH_YOUR_BACKGROUND_BASE64_OR_URL') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-attachment: fixed !important;
 }
 
-/* Headings */
+/* Background overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(245, 246, 250, 0.82);
+  z-index: 0;
+}
+
+/* Keep UI above overlay */
+.menu,
+.webapp-page,
+.panel {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Headings ───────────────────────────────────────── */
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Poppins', sans-serif;
   color: var(--ccna-navy);
@@ -34,153 +58,28 @@ h1,h2,h3,h4,h5,h6 {
 
 /* Links */
 a { color: var(--ccna-teal); }
-a:hover { color: var(--ccna-green); text-decoration: none; }
+a:hover { color: var(--ccna-green); }
 
-/* ── Navbar ───────────────────────────────────── */
+/* ── NAVBAR ─────────────────────────────────────────── */
 .navbar,
-.navbar-inverse {
+.navbar-inverse,
+.menu {
   background: var(--ccna-navy) !important;
   border: none !important;
   box-shadow: 0 2px 8px rgba(0,5,61,0.25);
 }
 
 /* Gradient strip */
-.navbar::after {
+.menu::after {
   content: '';
   display: block;
   height: 3px;
   background: var(--ccna-gradient);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
-/* Navbar links */
-.navbar-inverse .navbar-nav > li > a {
-  color: rgba(255,255,255,0.85);
-  font-family: 'Poppins';
-}
+/* ── LOGO (FIXED - EMBEDDED) ───────────────────────── */
 
-.navbar-inverse .navbar-nav > li > a:hover {
-  color: #fff;
-  background: rgba(255,255,255,0.1);
-}
-
-/* Active */
-.navbar-inverse .navbar-nav > .active > a {
-  color: #fff;
-  background: rgba(255,255,255,0.08);
-  border-bottom: 3px solid var(--ccna-teal);
-}
-
-/* ── Logo Replacement ─────────────────────────── */
-a.logo-left img {
-  content: url('data:image/png;base64,REPLACE_WITH_FINAL_LOGO');
-  height: 34px;
-  margin: 8px 16px;
-}
-
-/* ── Panels ───────────────────────────────────── */
-.panel {
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,5,61,0.08);
-}
-
-.panel-heading {
-  background: var(--ccna-navy);
-  color: #fff;
-}
-
-/* ── Buttons ─────────────────────────────────── */
-.btn-primary {
-  background: var(--ccna-teal);
-  border-color: var(--ccna-teal);
-}
-
-.btn-primary:hover {
-  background: #008F86;
-}
-
-/* ── Forms ───────────────────────────────────── */
-.form-control {
-  border: 1px solid var(--ccna-border);
-}
-
-.form-control:focus {
-  border-color: var(--ccna-teal);
-}
-
-/* ── Tables ─────────────────────────────────── */
-.table > thead > tr > th {
-  background: var(--ccna-navy);
-  color: #fff;
-}
-
-/* ── Sidebar ────────────────────────────────── */
-.nav-pills > li > a {
-  border-left: 3px solid transparent;
-}
-
-.nav-pills > li > a:hover {
-  border-left-color: var(--ccna-teal);
-}
-
-.nav-pills > li.active > a {
-  background: var(--ccna-navy);
-  color: #fff;
-}
-
-/* ── Login Panel ───────────────────────────── */
-.login-panel {
-  border-radius: 8px;
-}
-
-.login-panel::before {
-  content: '';
-  display: block;
-  height: 4px;
-  background: var(--ccna-gradient);
-}
-
-/* ── Alerts ────────────────────────────────── */
-.alert {
-  border-left: 4px solid;
-}
-.alert-success { border-color: var(--ccna-green); }
-.alert-info { border-color: var(--ccna-teal); }
-
-/* ── Footer ────────────────────────────────── */
-.footer {
-  background: var(--ccna-navy);
-  color: rgba(255,255,255,0.7);
-}
-
-/* ──────────────────────────────────────────── */
-/* OPTIONAL BACKGROUND IMAGE (safe + clean)    */
-/* Uncomment if you want the background style  */
-/* ──────────────────────────────────────────── */
-
-/*
-body {
-  background-image: url('data:image/jpeg;base64,REPLACE_IMAGE');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(245,246,250,0.82);
-  z-index: 0;
-}
-
-.panel,
-.navbar,
-.container {
-  position: relative;
-  z-index: 1;
-}
-*/
+/* Replace black/white logo with colour logo */
+.menu img {
+  content: url('REPLACE_WITH_YOUR_BASE64_LOGO') !important;
+  height: 34px !important;

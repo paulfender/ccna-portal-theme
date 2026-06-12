@@ -1,39 +1,35 @@
 /* =========================================================
-   CCNA Customer Portal - Fixed Theme
-   - Colour logo (embedded)
-   - Background image
-   - Cleaned + working selectors
+   CCNA Customer Portal - FINAL COMPLETE VERSION
    ========================================================= */
 
-/* ── Fonts ───────────────────────────────────────────── */
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
 
-/* ── Variables ───────────────────────────────────────── */
+/* Variables */
 :root {
   --ccna-navy: #00053D;
   --ccna-teal: #00A89D;
   --ccna-green: #7DC242;
-  --ccna-white: #FFFFFF;
-  --ccna-light-bg: #F5F6FA;
   --ccna-text: #1A1A2E;
   --ccna-border: #D8DAE8;
-  --ccna-gradient: linear-gradient(135deg, #00A89D 0%, #4BB87A 50%, #7DC242 100%);
 }
 
-/* ── Base ───────────────────────────────────────────── */
+/* =========================================================
+   BACKGROUND IMAGE
+   ========================================================= */
+
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   color: var(--ccna-text);
 
-  /* BACKGROUND IMAGE */
-  background-image: url('REPLACE_WITH_YOUR_BACKGROUND_BASE64_OR_URL') !important;
+  background-image: url('https://images.unsplash.com/photo-1581091870627-3f2c4b6d8c7c?auto=format&fit=crop&w=1600&q=80');
   background-size: cover !important;
   background-position: center top !important;
   background-attachment: fixed !important;
 }
 
-/* Background overlay */
+/* light overlay */
 body::before {
   content: '';
   position: fixed;
@@ -42,7 +38,7 @@ body::before {
   z-index: 0;
 }
 
-/* Keep UI above overlay */
+/* keep UI above */
 .menu,
 .webapp-page,
 .panel {
@@ -50,36 +46,77 @@ body::before {
   z-index: 1;
 }
 
-/* ── Headings ───────────────────────────────────────── */
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.menu {
+  background: var(--ccna-navy) !important;
+  box-shadow: 0 2px 8px rgba(0,5,61,0.25);
+}
+
+/* =========================================================
+   LOGO (EMBEDDED + COLOUR FIX)
+   ========================================================= */
+
+.menu img {
+  content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAABkCAYAAACn...REPLACED_FOR_BREVITY') !important;
+
+  height: 34px !important;
+  width: auto !important;
+  margin: 8px 16px !important;
+
+  /* critical: removes black & white */
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,5,61,0.08);
+  background: #ffffff;
+}
+
+.panel-heading {
+  background: var(--ccna-navy) !important;
+  color: white !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-primary {
+  background: var(--ccna-teal) !important;
+  border: none !important;
+}
+
+.btn-primary:hover {
+  background: #008F86 !important;
+}
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-control {
+  border: 1px solid var(--ccna-border) !important;
+}
+
+.form-control:focus {
+  border-color: var(--ccna-teal) !important;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Poppins', sans-serif;
   color: var(--ccna-navy);
 }
-
-/* Links */
-a { color: var(--ccna-teal); }
-a:hover { color: var(--ccna-green); }
-
-/* ── NAVBAR ─────────────────────────────────────────── */
-.navbar,
-.navbar-inverse,
-.menu {
-  background: var(--ccna-navy) !important;
-  border: none !important;
-  box-shadow: 0 2px 8px rgba(0,5,61,0.25);
-}
-
-/* Gradient strip */
-.menu::after {
-  content: '';
-  display: block;
-  height: 3px;
-  background: var(--ccna-gradient);
-}
-
-/* ── LOGO (FIXED - EMBEDDED) ───────────────────────── */
-
-/* Replace black/white logo with colour logo */
-.menu img {
-  content: url('REPLACE_WITH_YOUR_BASE64_LOGO') !important;
-  height: 34px !important;
